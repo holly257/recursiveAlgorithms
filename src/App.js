@@ -89,7 +89,6 @@ function App() {
     }
 
     // 8. Find a way out of the maze
-    //in progress
     function solveMaze(array, currentPos, path) {
         let row = currentPos[0];
         let col = currentPos[1];
@@ -97,7 +96,6 @@ function App() {
         if (array[row][col] === 'e') {
             return path;
         }
-
         if (row < array.length - 1) {
             if (array[row + 1][col] !== '*') {
                 array[row][col] = '*';
@@ -110,6 +108,18 @@ function App() {
                 return solveMaze(array, [row - 1, col], path + 'U');
             }
         }
+        if (col < array[0].length - 1) {
+            if (array[row][col + 1] !== '*') {
+                array[row][col] = '*';
+                return solveMaze(array, [row, col + 1], path + 'R');
+            }
+        }
+        if (col > 0) {
+            if (array[row][col - 1] !== '*') {
+                array[row][col] = '*';
+                return solveMaze(array, [row, col - 1], path + 'L');
+            }
+        }
     }
 
     let mySmallMaze = [
@@ -118,11 +128,7 @@ function App() {
         [' ', ' ', ' '],
     ];
 
-    console.log(solveMaze(mySmallMaze, [1, 2], ''));
-
-    //col. array[0].length
-    //no solution - empty
-    //dead end - go back
+    console.log(solveMaze(mySmallMaze, [0, 0], ''));
 
     // 9. Find ALL the ways out of the maze
     // 10. Anagrams
