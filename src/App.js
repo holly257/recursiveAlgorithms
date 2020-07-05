@@ -131,6 +131,7 @@ function App() {
     console.log(solveMaze(mySmallMaze, [0, 0], ''));
 
     // 9. Find ALL the ways out of the maze
+
     // 10. Anagrams
     function anagram(string) {
         const output = [];
@@ -171,8 +172,8 @@ function App() {
         ],
     ];
 
-    var new_printList = function (indent, list) {
-        var i;
+    let new_printList = function (indent, list) {
+        let i;
         for (i = 0; i < list.length; i++) {
             if (Array.isArray(list[i])) {
                 new_printList(indent + '   ', list[i]);
@@ -185,6 +186,19 @@ function App() {
     new_printList(' ', orgOther);
 
     // 12. Binary Representation
+    function toBinary(num) {
+        if (num == 0) {
+            return '0';
+        }
+
+        if (num == 1) {
+            return '1';
+        } else {
+            return toBinary(Math.floor(num / 2)) + (num % 2);
+        }
+    }
+
+    console.log(toBinary(17));
 
     return (
         <div className="App">
