@@ -150,28 +150,7 @@ function App() {
     console.log(anagram('east'));
 
     // 11. Organization Chart
-    let org = {
-        Zuckerberg: {
-            Schroepfer: {
-                Bosworth: ['Steve', 'Kyle', 'Andra'],
-                Zhao: ['Richie', 'Sofia', 'Jen'],
-            },
-            Schrage: {
-                VanDyck: ['Sabrina', 'Michelle', 'Josh'],
-                Zhao: ['Blanch', 'Tom', 'Joe'],
-            },
-            Sandberg: {
-                Goler: ['Eddie', 'Julie', 'Annie'],
-                Hernandez: ['Rowi', 'Inga', 'Morgan'],
-                Moissinac: ['Amy', 'Chuck', 'Vinni'],
-                Kelley: ['Eric', 'Ana', 'Wes'],
-            },
-        },
-    };
-
-    lst = ['a', ['b', 'c', ['d', 'i'], 'e'], 'f', ['g', 'h', ['j', 'k', 'l', 'm']]];
-
-    let org = [
+    let orgOther = [
         'Zuckerberg',
         [
             'Schroepfer',
@@ -191,6 +170,20 @@ function App() {
             ],
         ],
     ];
+
+    var new_printList = function (indent, list) {
+        var i;
+        for (i = 0; i < list.length; i++) {
+            if (Array.isArray(list[i])) {
+                new_printList(indent + '   ', list[i]);
+            } else {
+                console.log(indent + list[i]);
+            }
+        }
+    };
+
+    new_printList(' ', orgOther);
+
     // 12. Binary Representation
 
     return (
