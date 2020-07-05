@@ -132,7 +132,65 @@ function App() {
 
     // 9. Find ALL the ways out of the maze
     // 10. Anagrams
+    function anagram(string) {
+        const output = [];
+        function traverse(string, perm = '') {
+            const seen = new Set();
+            if (!string) output.push(perm);
+            for (let i = 0; i < string.length; i++) {
+                if (!seen.has(string[i])) {
+                    seen.add(string[i]);
+                    traverse(string.slice(0, i) + string.slice(i + 1), perm + string[i]);
+                }
+            }
+        }
+        traverse(string);
+        return output;
+    }
+    console.log(anagram('east'));
+
     // 11. Organization Chart
+    let org = {
+        Zuckerberg: {
+            Schroepfer: {
+                Bosworth: ['Steve', 'Kyle', 'Andra'],
+                Zhao: ['Richie', 'Sofia', 'Jen'],
+            },
+            Schrage: {
+                VanDyck: ['Sabrina', 'Michelle', 'Josh'],
+                Zhao: ['Blanch', 'Tom', 'Joe'],
+            },
+            Sandberg: {
+                Goler: ['Eddie', 'Julie', 'Annie'],
+                Hernandez: ['Rowi', 'Inga', 'Morgan'],
+                Moissinac: ['Amy', 'Chuck', 'Vinni'],
+                Kelley: ['Eric', 'Ana', 'Wes'],
+            },
+        },
+    };
+
+    lst = ['a', ['b', 'c', ['d', 'i'], 'e'], 'f', ['g', 'h', ['j', 'k', 'l', 'm']]];
+
+    let org = [
+        'Zuckerberg',
+        [
+            'Schroepfer',
+            ['Bosworth', ['Steve', 'Kyle', 'Andra'], 'Zhao', ['Richie', 'Sofia', 'Jen']],
+            'Schrage',
+            ['VanDyck', ['Sabrina', 'Michelle', 'Josh'], 'Zhao', ['Blanch', 'Tom', 'Joe']],
+            'Sandberg',
+            [
+                'Goler',
+                ['Eddie', 'Julie', 'Annie'],
+                'Hernandez',
+                ['Rowi', 'Inga', 'Morgan'],
+                'Moissinac',
+                ['Amy', 'Chuck', 'Vinni'],
+                'Kelley',
+                ['Eric', 'Ana', 'Wes'],
+            ],
+        ],
+    ];
     // 12. Binary Representation
 
     return (
